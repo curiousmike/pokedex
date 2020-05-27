@@ -66,6 +66,7 @@ class MainContainer extends React.Component {
         />
         <CreatureDetails
           pokemonDetails={this.state.selectedPokemonDetails}
+          readOnly={true}
           isVisible={this.state.isVisible}
         />
       </div>

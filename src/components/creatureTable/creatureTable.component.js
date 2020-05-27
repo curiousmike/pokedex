@@ -47,10 +47,10 @@ function CreatureTable(props) {
   return (
     <TableContainer
       className="container"
-      style={{ backgroundColor: "papayawhip" }}
+      style={{ backgroundColor: "#ffcb05" }}
       component={Paper}
     >
-      <Table aria-label="simple table" className="tableInner">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow className="tableRow">
             <TableCell style={{ width: "140px", padding: "8px" }}>
