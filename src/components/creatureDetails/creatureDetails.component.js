@@ -1,11 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Avatar } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-
-const red = "#ff0000";
-const blue = "#3B4CCA";
-const yellow = "#FFDE00";
+import Detail from "../detail/detail.component";
 
 const useStyles = makeStyles({
   input: {
@@ -22,18 +18,6 @@ const useStyles = makeStyles({
     width: "256px",
     height: "256px",
   },
-  nameText: {
-    width: "120px",
-    margin: "8px",
-    color: "white",
-    textAlign: "center",
-  },
-  text: {
-    width: "80px",
-    margin: "8px",
-    color: "white",
-    textAlign: "center",
-  },
   twoColumn: { display: "flex", justifyContent: "space-between" },
 });
 
@@ -47,56 +31,12 @@ function CreatureDetails(props) {
           <div>
             <form noValidate autoComplete="off">
               <div className={classes.twoColumn}>
-                <TextField
-                  label="Name"
-                  inputProps={{
-                    "aria-label": "description",
-                    style: { textAlign: "center" },
-                  }}
-                  value={pokemonDetails.name}
-                  className={classes.nameText}
-                  variant="outlined"
-                  margin="dense"
-                  readOnly
-                />
-                <TextField
-                  label="i.d."
-                  inputProps={{
-                    "aria-label": "description",
-                    style: { textAlign: "center" },
-                  }}
-                  value={pokemonDetails.id}
-                  className={classes.text}
-                  variant="outlined"
-                  margin="dense"
-                  readOnly
-                />
+                <Detail label="Name" value={pokemonDetails.name} />
+                <Detail label="i.d." value={pokemonDetails.id} />
               </div>
               <div className={classes.twoColumn}>
-                <TextField
-                  label="Weight"
-                  inputProps={{
-                    "aria-label": "description",
-                    style: { textAlign: "center" },
-                  }}
-                  value={pokemonDetails.weight}
-                  className={classes.text}
-                  variant="outlined"
-                  margin="dense"
-                  readOnly
-                />
-                <TextField
-                  label="Height"
-                  inputProps={{
-                    "aria-label": "description",
-                    style: { textAlign: "center" },
-                  }}
-                  value={pokemonDetails.height}
-                  className={classes.text}
-                  variant="outlined"
-                  margin="dense"
-                  readOnly
-                />
+                <Detail label="Weight" value={pokemonDetails.weight} />
+                <Detail label="Height" value={pokemonDetails.height} />
               </div>
               {/* Improvement: Create placeholder while waiting for image to load */}
               {/* https://github.com/mui-org/material-ui/issues/16161 */}
