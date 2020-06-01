@@ -3,6 +3,13 @@ import CreatureTable from "./creatureTable/creatureTable.component";
 import CreatureDetails from "./creatureDetails/creatureDetails.component";
 import "./mainContainer.css";
 
+const dummyPokemonDetails = {
+  name: "unknown",
+  id: 0,
+  weight: 0,
+  height: 0,
+};
+
 class MainContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -57,18 +64,31 @@ class MainContainer extends React.Component {
   }
   render() {
     return (
-      <div className="container">
-        <CreatureTable
-          pokemon={this.state.pokemon}
-          onSelectPokemon={(ix) => {
-            this.onSelectPokemon(ix);
-          }}
-        />
-        <CreatureDetails
-          pokemonDetails={this.state.selectedPokemonDetails}
-          readOnly={true}
-          isVisible={this.state.isVisible}
-        />
+      <div className="pageContainer">
+        <div className="logoStyle">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
+            alt="Pokemon Logo"
+          />
+        </div>
+        <div className="container">
+          <CreatureTable
+            pokemon={this.state.pokemon}
+            selectedPokemonIndex={this.state.selectedPokemonIndex}
+            onSelectPokemon={(ix) => {
+              this.onSelectPokemon(ix);
+            }}
+          />
+          <CreatureDetails
+            pokemonDetails={
+              this.state.selectedPokemonIndex
+                ? this.state.selectedPokemonDetails
+                : dummyPokemonDetails
+            }
+            readOnly={true}
+            isVisible={this.state.isVisible}
+          />
+        </div>
       </div>
     );
   }

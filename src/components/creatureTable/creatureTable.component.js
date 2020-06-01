@@ -9,9 +9,11 @@ import TableRow from "@material-ui/core/TableRow";
 import TableFooter from "@material-ui/core/TableFooter";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
+import "./creatureTable.css";
+
 const rowsPerPageOptions = [5, 8, 25, { label: "All", value: -1 }];
 
-function CreatureTable(props) {
+const CreatureTable = (props) => {
   // const [sortDir, setSortDir] = useState("asc");
   const [isSorted, setSorted] = useState(false);
   const [page, setPage] = useState(0);
@@ -46,15 +48,15 @@ function CreatureTable(props) {
 
   return (
     <TableContainer
-      className="container"
-      style={{ backgroundColor: "#ffcb05" }}
+      className="creature-container"
+      // style={{ backgroundColor: "#ffcb05" }}
       component={Paper}
     >
       <Table aria-label="simple table">
         <TableHead>
-          <TableRow className="tableRow">
+          <TableRow>
             <TableCell style={{ width: "140px", padding: "8px" }}>
-              Name {props.pokemon ? "(" + props.pokemon.length + ")" : ""}
+              I.D.
             </TableCell>
             <TableCell style={{ padding: "8px" }}>
               <TableSortLabel
@@ -66,7 +68,7 @@ function CreatureTable(props) {
                 active={props.pokemon.length > 0}
                 onClick={sortPokemon}
               >
-                Length
+                Name
               </TableSortLabel>
             </TableCell>
           </TableRow>
@@ -81,11 +83,28 @@ function CreatureTable(props) {
               : props.pokemon
             ).map((pokemon, index) => (
               <TableRow
+                className="tableRow"
+                style={
+                  index + page * rowsPerPage === props.selectedPokemonIndex - 1
+                    ? {
+                        backgroundColor: "gray",
+                      }
+                    : {
+                        backgroundColor: "#3B4CCA",
+                      }
+                }
                 key={index}
                 onClick={() =>
                   props.onSelectPokemon(index + page * rowsPerPage)
                 }
               >
+                <TableCell
+                  align="left"
+                  style={{ width: "10%", padding: "8px" }}
+                >
+                  {/* Pokemon ID */}
+                  {index + page * rowsPerPage + 1}
+                </TableCell>
                 <TableCell
                   component="th"
                   scope="row"
@@ -97,12 +116,6 @@ function CreatureTable(props) {
                   }}
                 >
                   {pokemon.name}
-                </TableCell>
-                <TableCell
-                  align="right"
-                  style={{ width: "80px", padding: "8px" }}
-                >
-                  {props.pokemon.length}
                 </TableCell>
               </TableRow>
             ))}
@@ -127,6 +140,6 @@ function CreatureTable(props) {
       </Table>
     </TableContainer>
   );
-}
+};
 
 export default CreatureTable;

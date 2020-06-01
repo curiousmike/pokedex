@@ -1,11 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Avatar } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 
-const red = "#ff0000";
-const blue = "#3B4CCA";
-const yellow = "#FFDE00";
+// const red = "#ff0000";
+// const blue = "#3B4CCA";
+// const yellow = "#FFDE00";
 
 const useStyles = makeStyles({
   nameText: {
@@ -16,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Detail(props) {
+const Detail = (props) => {
   const classes = useStyles();
   return (
     <TextField
@@ -32,6 +31,6 @@ function Detail(props) {
       readOnly
     />
   );
-}
+};
 
 export default Detail;
